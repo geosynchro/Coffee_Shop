@@ -1,29 +1,49 @@
 // client/src/components/App.js
 import { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Navbar from "./Navbar";
+import Homepage from "./Homepage";
+import BlogContainer from "./BlogContainter";
+import ProductContainer from "./ProductContainer";
+import LoginPage from "./LoginPage";
 
 function App() {
-  const [count, setCount] = useState(0);
 
   useEffect(() => {
     fetch("/hello")
       .then((r) => r.json())
-      .then((data) => setCount(data.count));
+      .then((data) => console.log(data.count));
+
+    fetch("/items")
+    .then(r => r.json())
+    .then(r => console.log(r))
   }, []);
 
   return (
+    <div>
+    <Navbar />
     <BrowserRouter>
       <div className="App">
         <Switch>
-          <Route path="/testing">
-            <h1>Test Route</h1>
+          <Route path="/blogs">
+            <BlogContainer />
           </Route>
+          <Route path="/products">
+            <ProductContainer />
+          </Route>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          {/* <Route path="/userpage">
+            <ProductContainer />
+          </Route> */}
           <Route path="/">
-            <h1>Page Count: {count}</h1>
+            <Homepage />
           </Route>
         </Switch>
       </div>
     </BrowserRouter>
+    </div>
   );
 }
 
