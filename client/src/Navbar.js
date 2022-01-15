@@ -4,7 +4,7 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, UserIcon, XIcon } from '@heroicons/react/outline'
 import CoffeeLogo from './assets/coffeelogo.svg'
-import { BrowserRouter as Link, Browser, Router } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // const navigation = [
 //   { name: 'Home', href: '#', current: true },
@@ -41,40 +41,26 @@ function Navbar() {
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">                       
-                            <Link to='/'>
+                        <Link to='/'>
                             <p className={classNames(
                                 'text-gray-50 hover:bg-amber-700 hover:text-white cursor-pointer',
                                 'px-3 py-2 rounded-md text-sm font-medium'
                                 )}> Home</p>
-                            </Link>
-                      
-                            <Link to="/products">
-                                <p className={classNames(
-                                    'text-gray-50 hover:bg-amber-700 hover:text-white cursor-pointer',
-                                    'px-3 py-2 rounded-md text-sm font-medium'
-                                    )}>Products</p>
-                            </Link>
-                    
-                            <Link to="/blog">
-                                <p className={classNames(
-                                    'text-gray-50 hover:bg-amber-700 hover:text-white cursor-pointer',
-                                    'px-3 py-2 rounded-md text-sm font-medium'
-                                    )}>Blog</p>
-                            </Link>
-               
-                    {/* {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current ? 'bg-amber-900 text-white' : 'text-gray-50 hover:bg-amber-500 hover:text-white',
-                          'px-3 py-2 rounded-md text-sm font-medium'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
-                      >
-                        {item.name}
-                      </a> */}
-                    {/* ))} */}
+                        </Link> 
+
+                        <Link to="/products">
+                            <p className={classNames(
+                                'text-gray-50 hover:bg-amber-700 hover:text-white cursor-pointer',
+                                'px-3 py-2 rounded-md text-sm font-medium'
+                                )}>Products</p>
+                        </Link>
+
+                        <Link to="/blogs">
+                            <p className={classNames(
+                                'text-gray-50 hover:bg-amber-700 hover:text-white cursor-pointer',
+                                'px-3 py-2 rounded-md text-sm font-medium'
+                                )}>Blog</p>
+                        </Link>
                   </div>
                 </div>
               </div>
@@ -93,9 +79,6 @@ function Navbar() {
                     <Menu.Button className="flex p-1 text-md text-gray-50 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-amber-800 focus:ring-white">
                       <span className="sr-only">Open user menu</span>
                       <UserIcon className="h-6 w-6" aria-hidden="true" />
-                      {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg> */}
                     </Menu.Button>
                   </div>
                   <Transition
@@ -147,25 +130,31 @@ function Navbar() {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-                <Disclosure.Button>
-                <Disclosure.Button className={classNames(
-                    'text-gray-50 hover:bg-amber-500 hover:text-white cursor-pointer',
-                    'px-3 py-2 rounded-md text-sm font-medium'
-                    )}>
-                        Home
-                </Disclosure.Button>
-                <Disclosure.Button className={classNames(
-                    'text-gray-50 hover:bg-amber-500 hover:text-white cursor-pointer',
-                    'px-3 py-2 rounded-md text-sm font-medium'
-                    )}>
-                        Products
-                </Disclosure.Button>
+    
+                <Link to="/">
+                    <Disclosure.Button className={classNames(
+                        'text-gray-50 hover:bg-amber-500 hover:text-white cursor-pointer',
+                        'px-3 py-2 rounded-md text-sm font-medium'
+                        )}>
+                            Home
+                    </Disclosure.Button>
+                </Link>
+                <Link to="/products">
+                    <Disclosure.Button className={classNames(
+                        'text-gray-50 hover:bg-amber-500 hover:text-white cursor-pointer',
+                        'px-3 py-2 rounded-md text-sm font-medium'
+                        )}>
+                            Products
+                    </Disclosure.Button>
+                </Link>
+                <Link to="/blogs">
                 <Disclosure.Button className={classNames('text-gray-50 hover:bg-amber-500 hover:text-white cursor-pointer',
                     'px-3 py-2 rounded-md text-sm font-medium'
                     )}>
                         Blog
                 </Disclosure.Button>
-                </Disclosure.Button>
+                </Link>
+                
               {/* {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}

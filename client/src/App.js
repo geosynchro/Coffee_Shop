@@ -1,6 +1,6 @@
 // client/src/components/App.js
 import { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import Homepage from "./Homepage";
 import BlogContainer from "./BlogContainter";
@@ -20,10 +20,9 @@ function App() {
   }, []);
 
   return (
-    <div>
-    <Navbar />
-    <BrowserRouter>
+  
       <div className="App">
+        <Navbar /> 
         <Switch>
           <Route path="/blogs">
             <BlogContainer />
@@ -34,16 +33,11 @@ function App() {
           <Route path="/login">
             <LoginPage />
           </Route>
-          {/* <Route path="/userpage">
-            <ProductContainer />
-          </Route> */}
           <Route path="/">
             <Homepage />
           </Route>
         </Switch>
       </div>
-    </BrowserRouter>
-    </div>
   );
 }
 
