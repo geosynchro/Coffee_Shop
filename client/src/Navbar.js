@@ -17,7 +17,16 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-function Navbar() {
+function Navbar({user, onLogout}) {
+
+  
+
+  function handleLogout() {
+    fetch("/logout", {
+      method: "DELETE",
+    }).then(() => onLogout());
+  }
+
   return (
     <Disclosure as="nav" className="bg-amber-500">
       {({ open }) => (
@@ -36,8 +45,14 @@ function Navbar() {
                 </Disclosure.Button>
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+    
                 <div className="flex-shrink-0 flex items-center">
                     <img src={CoffeeLogo} width={40} height={40} alt="logo"></img>
+                    <img
+                    className="hidden lg:block h-8 w-auto"
+                    src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+                    alt="Workflow"
+                  />
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">                       
@@ -91,16 +106,29 @@ function Navbar() {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
+                      { user ? <Menu.Item>
                         {({ active }) => (
-                          <span
+                           <span
                             href="#"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Your Profile
+                          </span> )}
+                          </Menu.Item> 
+                            :
+                          <Menu.Item>
+                        {({ active }) => (
+                           <Link to="/login"><span
+                            href="#"
+                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                          >
+                            Log In
                           </span>
+                          </Link>
                         )}
-                      </Menu.Item>
+                      </Menu.Item>}
+                        
+                     
                       <Menu.Item>
                         {({ active }) => (
                           <span
@@ -114,7 +142,7 @@ function Navbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <span
-                            href="#"
+                            onClick={handleLogout}
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Sign out

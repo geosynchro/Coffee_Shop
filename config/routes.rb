@@ -15,7 +15,12 @@ Rails.application.routes.draw do
 #items routes
   get '/items', to: 'items#index'
 
-  get '/hello', to: 'application#hello_world'
+
+#Login/logout/sessions/create user
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+  get "/me", to: "users#show"
+  post '/signup', to: 'users#create'
 
   get '*path',
   to: 'fallback#index',
