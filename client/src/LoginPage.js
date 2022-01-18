@@ -1,9 +1,9 @@
 import { LockClosedIcon } from '@heroicons/react/solid'
 import CoffeeLogo from './assets/coffeelogo.svg'
-import {useState} from 'react'
+// import {useState} from 'react'
 import SignUp from './SignUp'
 
-function LoginPage({handleSubmit, setEmail, setPassword}) {
+function LoginPage({handleSubmit, setEmail, setPassword, signUpSubmit, loginError}) {
 
 
   return (
@@ -68,7 +68,7 @@ function LoginPage({handleSubmit, setEmail, setPassword}) {
         </div>
       </div>
 
-    <SignUp />
+    <SignUp signUpSubmit={signUpSubmit}/>
 
 
     </>

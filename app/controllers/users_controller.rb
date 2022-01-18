@@ -13,6 +13,23 @@ class UsersController < ApplicationController
         else
           render json: { error: "Not authorized" }, status: :unauthorized
         end
+    end
+
+    def update
+      user = User.find(params[:id])
+      user.update!(user_params)
+      render json: user, status: :accepted
+    end
+
+    def destroy
+      user = User.find(params[:id])
+      render json: user.destroy, status: :ok
+    end
+
+      private
+
+      def user_params
+        params.permit(:username, :password, :email_address)
       end
 
 end
