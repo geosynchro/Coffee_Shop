@@ -3,7 +3,7 @@ class CartsController < ApplicationController
     
     def index
         carts = Cart.all
-        render json: carts, status: :ok
+        render json: cart, status: :ok
     end
     
     def create
@@ -11,9 +11,11 @@ class CartsController < ApplicationController
         render json: cart_item, status: :created
     end
 
-    # def user_items
-    #     items = Cart.find_by()
-    # end
+    def destroy
+        cart = Cart.find(params[:id])
+        render json: cart.destroy, status: :ok
+    end
+
     
 
 

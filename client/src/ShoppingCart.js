@@ -1,15 +1,10 @@
 // import {useEffect, useState} from 'react'
 
-function ShoppingCart({user}) {
-    // const [cart, setCart] = useState([])
-    console.log(user)
-    // useEffect(() => {
-    //   fetch("/usercart")
-    //   .then(res => res.json())
-    //   .then(res => setCart(res))
-    //   // .then(console.log(test))
-    // }, [])
+function ShoppingCart({user, deleteFromCart}) {
+
     const cartItems = user.carts
+
+
 
     return (
       <div className="flex flex-col">
@@ -62,9 +57,8 @@ function ShoppingCart({user}) {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${cart.item.price}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      {/* <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                        Edit
-                      </a> */}
+                       <button type="button" className=" bg-red-500 text-white px-2 py-2 rounded-md" onClick={() => deleteFromCart(cart.id)}> Remove From Cart</button>
+                      
                     </td>
                     </tr>
                   ))}

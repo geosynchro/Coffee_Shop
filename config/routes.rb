@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :reviews
-  resources :carts, only: [:index, :create]
+  resources :carts, only: [:index, :create, :destroy]
   resources :items, only: [:index, :show]
   resources :comments
   resources :blogs

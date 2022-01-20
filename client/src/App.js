@@ -109,6 +109,17 @@ function App() {
     .then(newCartItem => {setUser({...user, carts: [...user.carts, newCartItem]})})
   }
 
+
+  //Remove Item from cart
+  function handleCartItemDelete(id){
+    fetch(`/carts/${id}`, {
+      method: 'DELETE',
+      headers: {'Content-type':'application/json'},
+    })
+    .then(res => res.json())
+    .then(() => setUser({...user, carts: user.carts.filter(cartItem => cartItem.id !== id)}))
+  }
+
   //Login Display Error
   function displayLoginError(error){
     setLoginError(error)
@@ -138,7 +149,7 @@ function App() {
             <ProductContainer addCartItem={handleAddCartItem} items={itemsToDisplay} setItems={setItems} search={search} setSearch={setSearch} setCategory={setCategory} user={user}/>
           </Route>
           <Route path="/cart">
-            <ShoppingCart items={items} user={user}/>
+            <ShoppingCart items={items} user={user} deleteFromCart={handleCartItemDelete}/>
           </Route>
           <Route path="/login">
             <UserLoginProfile  deleteUser={handleUserDelete} updateUser={updateUser} user={user} setUser={setUser} setPassword={setPassword} setEmail={setEmail} handleUserSubmit={handleUserSubmit} handleSignUpSubmit={handleSignUpSubmit} loginError={loginError}/>
