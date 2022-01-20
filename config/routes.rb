@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   resources :reviews
-  resources :carts
-  resources :items, only: [:index]
+  resources :carts, only: [:index, :create]
+  resources :items, only: [:index, :show]
   resources :comments
   resources :blogs
   resources :item_categories
-  resources :users
+  resources :users 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   
 #items routes
   get '/items', to: 'items#index'
+
+#Cart Item routes
+  get '/cart', to: 'carts#index'
+  post '/cart', to: 'carts#create'
+  get '/usercart', to: 'carts#user_items'
 
 
 #Login/logout/sessions/create user

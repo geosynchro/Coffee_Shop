@@ -2,8 +2,8 @@
 
 function Homepage(){
     return(
-        <div>
-            <h1>Home</h1>
+        <div className="bg-coffee2 bg-fixed h-full w-screen" >
+            
         </div>
     )
 }

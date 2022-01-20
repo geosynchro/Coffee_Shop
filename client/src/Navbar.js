@@ -2,7 +2,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, UserIcon, XIcon } from '@heroicons/react/outline'
+import { BellIcon, MenuIcon, UserIcon, XIcon, ShoppingCartIcon } from '@heroicons/react/outline'
 import CoffeeLogo from './assets/coffeelogo.svg'
 import { Link } from 'react-router-dom'
 
@@ -28,7 +28,7 @@ function Navbar({user, onLogout}) {
   }
 
   return (
-    <Disclosure as="nav" className="bg-amber-500">
+    <Disclosure as="nav" className="bg-amber-500 sticky top-0 z-50">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -48,7 +48,7 @@ function Navbar({user, onLogout}) {
     
                 <div className="flex-shrink-0 flex items-center">
                     <img src={CoffeeLogo} width={40} height={40} alt="logo"/>
-                    <h1 className=" ml-3 mb-1 text-3xl text-white font-lobster mt-1">Nick's Coffee Shop</h1>
+                    <h1 className=" ml-3 mb-1 text-3xl text-white font-lobster mt-1">Nick's Coffee Supply</h1>
                     {/* <img
                     className="hidden lg:block h-8 w-auto"
                     src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
@@ -81,13 +81,15 @@ function Navbar({user, onLogout}) {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <Link to="/cart">
                 <button
                   type="button"
                   className="bg-amber-500 p-1 rounded-full text-gray-50 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-amber-800 focus:ring-white"
-                >
+                  >
                   <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
+                  <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
+                </Link>
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-3 relative">

@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
       user = User.find_by(email_address: params[:email_address])
       if  user&.authenticate(params[:password])  
         session[:user_id] = user.id
-        render json: user, include: []
+        render json: user, include: ['carts', 'reviews', 'comments']
       else
         render json: { error: "Not authorized" }, status: :unauthorized
       end

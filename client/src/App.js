@@ -7,6 +7,7 @@ import BlogContainer from "./BlogContainter";
 import ProductContainer from "./ProductContainer";
 import UserLoginProfile from "./UserLoginProfile"
 import LogoutPage from "./LogoutPage";
+import ShoppingCart from "./ShoppingCart"
 
 function App() {
   //Stateful variables
@@ -14,6 +15,10 @@ function App() {
   const [email_address, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState({})
+  const [items, setItems] = useState([])
+  const [search, setSearch] = useState("")
+  const [category, setCategory] = useState("")
+  const [cartItems, setCartItems] = useState([])
 
   //Initial Fetches on Page load
   useEffect(() => {
@@ -22,13 +27,6 @@ function App() {
         response.json().then((user) => setUser(user));
       }
     });
-  }, []);
-
-  useEffect(() => {
-    fetch("/items")
-    .then(r => r.json())
-    .then(r => console.log(r))
-
   }, []);
 
 
@@ -100,6 +98,17 @@ function App() {
     .then(() => setUser(null))
 }
 
+// Add item to cart
+  function handleAddCartItem(newCartItem){
+    fetch('/carts', {
+        method: 'POST',
+        headers: {'Content-type':'application/json'},
+        body: JSON.stringify(newCartItem)
+    })
+    .then(res => res.json())
+    .then(newCartItem => {setUser({...user, carts: [...user.carts, newCartItem]})})
+  }
+
   //Login Display Error
   function displayLoginError(error){
     setLoginError(error)
@@ -111,6 +120,12 @@ function App() {
     setUser(null);
   }
 
+  const itemsToDisplay = items.filter(item => item.name.toLowerCase().includes(search.toLowerCase())).filter((item) => {
+    if (category === "all") return true
+    return item.item_category.category_name === category
+  })
+  
+
   return (
   
       <div className="App">
@@ -120,7 +135,10 @@ function App() {
             <BlogContainer />
           </Route>
           <Route path="/products">
-            <ProductContainer />
+            <ProductContainer addCartItem={handleAddCartItem} items={itemsToDisplay} setItems={setItems} search={search} setSearch={setSearch} setCategory={setCategory} user={user}/>
+          </Route>
+          <Route path="/cart">
+            <ShoppingCart items={items} user={user}/>
           </Route>
           <Route path="/login">
             <UserLoginProfile  deleteUser={handleUserDelete} updateUser={updateUser} user={user} setUser={setUser} setPassword={setPassword} setEmail={setEmail} handleUserSubmit={handleUserSubmit} handleSignUpSubmit={handleSignUpSubmit} loginError={loginError}/>
