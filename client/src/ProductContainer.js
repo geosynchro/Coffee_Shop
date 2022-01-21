@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import ItemCard from "./ItemCard"
 
-function ProductContainer({addCartItem ,items, setItems, search, setSearch, category, setCategory, user}){
+function ProductContainer({addCartItem ,items, setItems, search, setSearch, viewItemPage, setCategory, user}){
 
     useEffect(() => {
 
@@ -10,7 +10,7 @@ function ProductContainer({addCartItem ,items, setItems, search, setSearch, cate
         .then(r => setItems(r))
     }, [])
 
-    const productsDisplay = items.map(item => <ItemCard key={item.id} user={user} id={item.id} name={item.name} price={item.price} category={item.category} image={item.image_url} description={item.description} user={user} addCartItem={addCartItem}/>)
+    const productsDisplay = items.map(item => <ItemCard key={item.id} id={item.id} name={item.name} price={item.price} category={item.category} image={item.image_url} description={item.description} user={user} addCartItem={addCartItem} viewItemPage={viewItemPage}/>)
 
     return(
         <div>

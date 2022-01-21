@@ -8,6 +8,7 @@ import ProductContainer from "./ProductContainer";
 import UserLoginProfile from "./UserLoginProfile"
 import LogoutPage from "./LogoutPage";
 import ShoppingCart from "./ShoppingCart"
+import ViewItem from "./ViewItem";
 
 function App() {
   //Stateful variables
@@ -18,7 +19,7 @@ function App() {
   const [items, setItems] = useState([])
   const [search, setSearch] = useState("")
   const [category, setCategory] = useState("")
-  const [cartItems, setCartItems] = useState([])
+  const [itemView, setItemView] = useState({})
 
   //Initial Fetches on Page load
   useEffect(() => {
@@ -120,6 +121,13 @@ function App() {
     .then(() => setUser({...user, carts: user.carts.filter(cartItem => cartItem.id !== id)}))
   }
 
+  //Show singular item page
+  function viewItemPage(id){
+      fetch(`/items/${id}`)
+      .then(res => res.json())
+      .then(res => setItemView(res))
+  }
+
   //Login Display Error
   function displayLoginError(error){
     setLoginError(error)
@@ -146,7 +154,7 @@ function App() {
             <BlogContainer />
           </Route>
           <Route path="/products">
-            <ProductContainer addCartItem={handleAddCartItem} items={itemsToDisplay} setItems={setItems} search={search} setSearch={setSearch} setCategory={setCategory} user={user}/>
+            <ProductContainer viewItemPage={viewItemPage} addCartItem={handleAddCartItem} items={itemsToDisplay} setItems={setItems} search={search} setSearch={setSearch} setCategory={setCategory} user={user}/>
           </Route>
           <Route path="/cart">
             <ShoppingCart items={items} user={user} deleteFromCart={handleCartItemDelete}/>
@@ -159,6 +167,9 @@ function App() {
           </Route>
           <Route path="/logout">
             <LogoutPage />
+          </Route>
+          <Route path="/viewitem">
+            <ViewItem itemView={itemView}/>
           </Route>
           <Route path="/">
             <Homepage />
