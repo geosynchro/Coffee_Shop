@@ -13,38 +13,13 @@ function SignUp ({signUpSubmit}){
       const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
       };
-    
-    //   const handleSignUpSubmit = (e) => {
-    //     e.preventDefault();
-    
-    //     const configObj = {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(formData),
-    //     };
-    
-    //     fetch("/signup", configObj).then((resp) => {
-    //       if (resp.ok) {
-    //         resp.json().then((user) => {
-    //           console.log(user);
-    //           setUser(user);
-    //         });
-    //       } else {
-    //         resp.json().then((errors) => {
-    //           console.error(errors);
-    //         });
-    //       }
-    //     });
-    //   }
 
     return(
     <div className="min-h-full flex items-center justify-center py-1 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
             <div>
                 <h2 className=" text-center text-3xl font-extrabold text-gray-900">New to the shop?</h2>
-                <h2 className=" text-center text-3xl font-extrabold text-gray-900">Sign up for an account</h2>
+                <h2 className=" text-center text-3xl font-extrabold text-gray-900">Sign up!</h2>
             </div>
             <form className="mt-8 space-y-6" onSubmit={(e) => signUpSubmit(e, formData)}>
                 {/* <input type="hidden" name="remember" defaultValue="true" /> */}

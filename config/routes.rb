@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :reviews
+  resources :reviews, only: [:create]
   resources :carts, only: [:index, :create, :destroy]
   resources :items, only: [:index, :show]
-  resources :comments
+  resources :comments, only: [:create]
   resources :blogs
   resources :item_categories
   resources :users 
@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   get '/cart', to: 'carts#index'
   post '/cart', to: 'carts#create'
   get '/usercart', to: 'carts#user_items'
+
+#BLog Routes
+  get '/blogs', to: 'blogs#index'
 
 
 #Login/logout/sessions/create user

@@ -1,9 +1,11 @@
 
 
-function ItemReview(){
+function ItemReview({id, text, rating, user}){
     return(
         <div>
-            <h1>yo</h1>
+            <p>{text}</p>
+            <p>{rating}</p>
+            <p>{user.username}</p>
           
         </div>
     )

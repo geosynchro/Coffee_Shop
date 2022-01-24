@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
 
     def show
         item = Item.find(params[:id])
-        render json: item, status: :ok
+        render json: item, include: [:reviews], status: :ok
     end
 
 

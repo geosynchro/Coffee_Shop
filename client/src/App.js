@@ -9,6 +9,7 @@ import UserLoginProfile from "./UserLoginProfile"
 import LogoutPage from "./LogoutPage";
 import ShoppingCart from "./ShoppingCart"
 import ViewItem from "./ViewItem";
+import BlogPage from "./BlogPage";
 
 function App() {
   //Stateful variables
@@ -20,6 +21,8 @@ function App() {
   const [search, setSearch] = useState("")
   const [category, setCategory] = useState("")
   const [itemView, setItemView] = useState({})
+  const [reviews, setReviews] = useState([])
+  const [blog, setBlog] = useState({})
 
   //Initial Fetches on Page load
   useEffect(() => {
@@ -28,6 +31,7 @@ function App() {
         response.json().then((user) => setUser(user));
       }
     });
+    
   }, []);
 
 
@@ -125,7 +129,41 @@ function App() {
   function viewItemPage(id){
       fetch(`/items/${id}`)
       .then(res => res.json())
-      .then(res => setItemView(res))
+      .then(res => {
+        setItemView(res)
+        setReviews(res.reviews)
+      })
+  }
+
+  //Posting new review
+  function reviewSubmit(newReview){
+    fetch('/reviews', {
+    method: "POST",
+    headers: {"Content-type" : "application/json"},
+    body: JSON.stringify(newReview)
+    })
+    .then(res => res.json())
+    .then(newReview => setReviews([newReview, ...reviews]))
+  }
+
+  //Blog fetch
+  function viewBlogPage(id){
+    fetch(`/blogs/${id}`)
+    .then(res => res.json())
+    .then(res => {
+      setBlog(res)
+    })
+  }
+
+  //Comment Submit
+  function commentSubmit(newComment){
+    fetch('/comments', {
+    method: "POST",
+    headers: {"Content-type" : "application/json"},
+    body: JSON.stringify(newComment)
+    })
+    .then(res => res.json())
+    .then(newComment => setBlog({...blog, comments : [...blog.comments, newComment]}))
   }
 
   //Login Display Error
@@ -151,7 +189,7 @@ function App() {
         <Navbar user={user} onLogin={setUser} onLogout={onLogout}/> 
         <Switch>
           <Route path="/blogs">
-            <BlogContainer />
+            <BlogContainer viewBlogPage={viewBlogPage}/>
           </Route>
           <Route path="/products">
             <ProductContainer viewItemPage={viewItemPage} addCartItem={handleAddCartItem} items={itemsToDisplay} setItems={setItems} search={search} setSearch={setSearch} setCategory={setCategory} user={user}/>
@@ -169,7 +207,10 @@ function App() {
             <LogoutPage />
           </Route>
           <Route path="/viewitem">
-            <ViewItem itemView={itemView}/>
+            <ViewItem itemView={itemView} reviews={reviews} user={user} reviewSubmit={reviewSubmit}/>
+          </Route>
+          <Route path="/viewblog">
+            <BlogPage blog={blog} user={user} commentSubmit={commentSubmit}/>
           </Route>
           <Route path="/">
             <Homepage />
