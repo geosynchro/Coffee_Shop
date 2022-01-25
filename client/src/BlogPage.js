@@ -27,7 +27,7 @@ function BlogPage({blog, user, commentSubmit}){
             </div>
             <div className="mt-10">
                 <button onClick={handleClick} className=" bg-amber-400 rounded-md px-1 py-1 ">leave a comment</button>
-                {commentForm ? <CommentForm blog_id={blog.id} user_id={user.id} commentSubmit={commentSubmit}/> : null}
+                {commentForm ?  (user ? <CommentForm blog_id={blog.id} user_id={user.id} commentSubmit={commentSubmit}/> : <p>Please Login to your account to leave a comment</p>) : null}
                 <h1>comments:</h1>
             {comments }
             </div>

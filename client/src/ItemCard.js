@@ -10,6 +10,10 @@ function ItemCard({name, id, price, description, category, image, user, addCartI
         })
     }
 
+    function handleAlert(){
+      alert('Please Login or Create an account to add items into your cart')
+    }
+
     function handleDisplayItem(id){
         viewItemPage(id)
     }
@@ -32,14 +36,13 @@ function ItemCard({name, id, price, description, category, image, user, addCartI
                 </Link>
                 <div>
 
-                {user ? <div>
-                <button onClick={() => handleClick()} className="flex mt-1 mr-1 bg-amber-500 px-1 py-1 rounded-md mb-2 text-md text-white hover:text-amber-800 hover:underline">Add to cart</button>
+               
                 <div>
-                { user.is_admin ? <button className="flex mx-auto mt-1 bg-amber-500 px-1 py-1 rounded-md mb-2 text-md text-white hover:text-amber-800 hover:underline">Edit/Delete Item</button> : null}
+                <button onClick={ user ? () => handleClick() : () => handleAlert()} className="flex mt-1 mr-1 bg-amber-500 px-1 py-1 rounded-md mb-2 text-md text-white hover:text-amber-800 hover:underline">Add to cart</button>
+                  <div>
+                  {user ? (user.is_admin ? <button className="flex mx-auto mt-1 bg-amber-500 px-1 py-1 rounded-md mb-2 text-md text-white hover:text-amber-800 hover:underline">Edit/Delete Item</button> : null) : null }
+                  </div>
                 </div>
-                </div>
-                :
-                null}
                 </div>
                 {/* <div>
                   {user.is_admin ? 

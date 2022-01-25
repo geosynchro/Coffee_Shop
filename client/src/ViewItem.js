@@ -46,7 +46,7 @@ function ViewItem({itemView, reviews, user, reviewSubmit}){
             <button className='mx-auto bg-gray-200 px-1 py-1 mt-2 rounded-md shadow-sm shadow-gray-400' onClick={displayReviews}>Leave a Review</button>
         </div>
         <div>
-            {reviewForm ? <ReviewForm item_id={itemView.id} user={user} reviewSubmit={reviewSubmit}/> : null}
+            {reviewForm ? (user ? <ReviewForm item_id={itemView.id} user={user} reviewSubmit={reviewSubmit}/> : <p>Login or create an account to leave a review!</p>) : null}
         </div>
         <div>
              {reviewsDisplay}

@@ -19,7 +19,7 @@ function App() {
   const [loginError, setLoginError] = useState({})
   const [items, setItems] = useState([])
   const [search, setSearch] = useState("")
-  const [category, setCategory] = useState("")
+  const [category, setCategory] = useState("all")
   const [itemView, setItemView] = useState({})
   const [reviews, setReviews] = useState([])
   const [blog, setBlog] = useState({})
@@ -32,7 +32,15 @@ function App() {
       }
     });
     
+    
   }, []);
+
+    useEffect(() => {
+
+      fetch("/items")
+      .then(r => r.json())
+      .then(r => setItems(r))
+  }, [])
 
 
 //Event handlers and CRUD actions that change state

@@ -10,6 +10,7 @@ function CommentForm({user_id, blog_id, commentSubmit}){
     function handleSubmit(e){
         e.preventDefault()
         commentSubmit(formData)
+        e.currentTarget.reset()
     }
 
     function handleChange(e){

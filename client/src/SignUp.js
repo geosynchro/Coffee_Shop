@@ -19,7 +19,7 @@ function SignUp ({signUpSubmit}){
         <div className="max-w-md w-full space-y-8">
             <div>
                 <h2 className=" text-center text-3xl font-extrabold text-gray-900">New to the shop?</h2>
-                <h2 className=" text-center text-3xl font-extrabold text-gray-900">Sign up!</h2>
+                <h2 className=" text-center text-3xl font-extrabold text-gray-900">Sign up for an account</h2>
             </div>
             <form className="mt-8 space-y-6" onSubmit={(e) => signUpSubmit(e, formData)}>
                 {/* <input type="hidden" name="remember" defaultValue="true" /> */}
