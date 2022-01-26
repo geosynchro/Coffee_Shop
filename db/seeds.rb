@@ -14,6 +14,8 @@ User.destroy_all
 ItemCategory.destroy_all
 Item.destroy_all
 Review.destroy_all
+Blog.destroy_all
+Comment.destroy_all
 
 p "seeding database"
 

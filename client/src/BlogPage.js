@@ -1,21 +1,35 @@
 
 import BlogComments from './BlogComment'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import CommentForm from './CommentForm'
+import { useParams} from 'react-router-dom'
 
-function BlogPage({blog, user, commentSubmit}){
+function BlogPage({ user, commentSubmit}){
     const [commentForm, setCommentForm] = useState(false)
+    const [blog, setBlog] = useState(null)
 
     console.log(blog)
     // console.log(user)
-    const comments = blog.comments?.map(comment => <BlogComments key={comment.id} id={comment.id} text={comment.comment_text} username={comment.user.username}/>)
+    const {id} = useParams()
+
+    useEffect(() => {
+
+            fetch(`/blogs/${id}`)
+            .then(res => res.json())
+            .then(res => {
+              setBlog(res)
+            })
+          }, [])
+    
+    const comments = blog?.comments.map(comment => <BlogComments key={comment.id} id={comment.id} text={comment.comment_text} username={comment.user.username}/>)
 
     function handleClick(){
         setCommentForm((prev) => !prev)
     }
 
     return(
-        <div className=' flex justify-center bg-coffee7 bg-fixed h-full'>
+        <>
+        { blog && (<div className=' flex justify-center bg-coffee7 bg-fixed h-full'>
             <div>
             <div className="flex justify-center">
                 <h1 className="text-2xl text-center mt-8 bg-amber-800 rounded-lg px-4 py-2 text-white font-lobster">{blog.title}</h1>
@@ -37,7 +51,10 @@ function BlogPage({blog, user, commentSubmit}){
                 </div>
             </div>
             </div>
-        </div>       
+        </div>  )    
+        }
+        </>
+         
     )
 }
 

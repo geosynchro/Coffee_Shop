@@ -11,7 +11,7 @@ function ProductContainer({addCartItem ,items, setItems, search, setSearch, view
         <div className="">
 
         
-        <div className="bg-coffee7 h-full w-full bg-fixed">
+        <div className="bg-coffee7 h-full bg-fixed">
         
         {/* <div className="h-screen"> */}
         <div className=" mx-auto py-8 px-4  lg:max-w-7xl lg:px-8 ">

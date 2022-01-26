@@ -156,13 +156,13 @@ function App() {
   }
 
   //Blog fetch
-  function viewBlogPage(id){
-    fetch(`/blogs/${id}`)
-    .then(res => res.json())
-    .then(res => {
-      setBlog(res)
-    })
-  }
+  // function viewBlogPage(id){
+  //   fetch(`/blogs/${id}`)
+  //   .then(res => res.json())
+  //   .then(res => {
+  //     setBlog(res)
+  //   })
+  // }
 
   //Comment Submit
   function commentSubmit(newComment){
@@ -198,7 +198,7 @@ function App() {
         <Navbar user={user} onLogin={setUser} onLogout={onLogout}/> 
         <Switch>
           <Route path="/blogs">
-            <BlogContainer viewBlogPage={viewBlogPage}/>
+            <BlogContainer />
           </Route>
           <Route path="/products">
             <ProductContainer viewItemPage={viewItemPage} addCartItem={handleAddCartItem} items={itemsToDisplay} setItems={setItems} search={search} setSearch={setSearch} setCategory={setCategory} user={user}/>
@@ -218,8 +218,8 @@ function App() {
           <Route path="/viewitem">
             <ViewItem itemView={itemView} reviews={reviews} user={user} reviewSubmit={reviewSubmit}/>
           </Route>
-          <Route path="/viewblog">
-            <BlogPage blog={blog} user={user} commentSubmit={commentSubmit}/>
+          <Route path="/viewblog/:id">
+            <BlogPage  user={user} commentSubmit={commentSubmit}/>
           </Route>
           <Route path="/">
             <Homepage items={items} viewItemPage={viewItemPage}/>

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-
+    skip_before_action :authorize
     def create
         comment = Comment.create!(comment_params)
         render json: comment, status: :created

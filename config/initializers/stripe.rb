@@ -1,7 +1,5 @@
 
-Rails.configuration.stripe = {
-    :publishable_key => ENV['PUBLISHABLE_KEY'],
-    :secret_key => ENV['STRIPE_SECRET_KEY']
-}
-
-Stripe.api_key = Rails.configuration.stripe[:secret_key]
+Stripe.api_key = Rails.application.credentials.stripe[:public_key]
+require 'stripe'
+# This is your real test secret API key.
+Stripe.api_key = Rails.application.credentials.stripe[:secret_key]
