@@ -20,8 +20,8 @@ Comment.destroy_all
 p "seeding database"
 
 # User Seed data 
-User.create(username: "Admin", password: "admin12345", email_address: "admin@email.com", is_admin: true)
-User.create(username: "Nick", password: "nick", email_address: "nick@email.com", is_admin: false)
+u1 = User.create(username: "Admin", password: "admin12345", email_address: "admin@email.com", is_admin: true)
+u2 = User.create(username: "Nick", password: "nick", email_address: "nick@email.com", is_admin: false)
 
 # Item Category seed data
 ItemCategory.create(category_name: "Pourover")
@@ -54,24 +54,24 @@ Item.create(name: "Thing", price: 50, description: "It grinds your coffee pretty
 Item.create(name: "Coffee Grinder", price: 50, description: "It grinds your coffee pretty alright", image_url: "https://images.pexels.com/photos/1442880/pexels-photo-1442880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", item_category_id: rand(1..5))
 
 # Reviews Seed data
-Review.create(item_id: rand(1..20), user_id: rand(1..2), rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
-Review.create(item_id: rand(1..20), user_id: rand(1..2), rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
-Review.create(item_id: rand(1..20), user_id: rand(1..2), rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
-Review.create(item_id: rand(1..20), user_id: rand(1..2), rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
-Review.create(item_id: rand(1..20), user_id: rand(1..2), rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
-Review.create(item_id: rand(1..20), user_id: rand(1..2), rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
-Review.create(item_id: rand(1..20), user_id: rand(1..2), rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
-Review.create(item_id: rand(1..20), user_id: rand(1..2), rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
-Review.create(item_id: rand(1..20), user_id: rand(1..2), rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
-Review.create(item_id: rand(1..20), user_id: rand(1..2), rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
-Review.create(item_id: rand(1..20), user_id: rand(1..2), rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
+Review.create(item_id: Item.ids.sample, user_id: User.ids.sample, rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
+Review.create(item_id: Item.ids.sample, user_id: User.ids.sample, rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
+Review.create(item_id: Item.ids.sample, user_id: User.ids.sample, rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
+Review.create(item_id: Item.ids.sample, user_id: User.ids.sample, rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
+Review.create(item_id: Item.ids.sample, user_id: User.ids.sample, rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
+Review.create(item_id: Item.ids.sample, user_id: User.ids.sample, rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
+Review.create(item_id: Item.ids.sample, user_id: User.ids.sample, rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
+Review.create(item_id: Item.ids.sample, user_id: User.ids.sample, rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
+Review.create(item_id: Item.ids.sample, user_id: User.ids.sample, rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
+Review.create(item_id: Item.ids.sample, user_id: User.ids.sample, rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
+Review.create(item_id: Item.ids.sample, user_id: User.ids.sample, rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
 
 # Blog Seed Data
-Blog.create(title: "Coffee Stuff", user_id: 1, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
-Blog.create(title: "Coffee Stuff part 2", user_id: 1, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
-Blog.create(title: "YO THIS IS MY BLOG TITLE", user_id: 1, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
-Blog.create(title: "The essence of Coffee: a poem", user_id: 1, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
-Blog.create(title: "Hello Coffee World", user_id: 1, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
+Blog.create(title: "Coffee Stuff", user: u1.id, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
+Blog.create(title: "Coffee Stuff part 2", user: u1.id, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
+Blog.create(title: "YO THIS IS MY BLOG TITLE", user: u1.id, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
+Blog.create(title: "The essence of Coffee: a poem", user: u1.id, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
+Blog.create(title: "Hello Coffee World", user: u1.id, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
 
 
 Comment.create(comment_text: "this blog is fire", user_id:rand(1..2), blog_id:rand(1..5))
