@@ -1,18 +1,16 @@
-import SimpleImageSlider from "react-simple-image-slider";
+import { Link } from 'react-router-dom'
 
-function Homepage(){
+function Homepage({items, viewItemPage}){
 
-    const images = [
-        { url: "./assets/coffee4sm.jpeg" },
-        { url: "./assets/coffeebg3.jpeg" }
-      ]
-    
-
+    const reccomendedProducts = items.slice(0,5)
+    function handleDisplayItem(id){
+        viewItemPage(id)
+    }
     return(
-        <div className="bg-coffee2 bg-fixed h-full" >
+        <div className="bg-coffee7 bg-fixed h-full" >
             <div className="flex">
-                <div className=" container bg-amber-700/75 border-1 border-amber-500 h-1/2 w/1/2 mt-24 mb-20 mx-8 rounded-md px-4 py-4">
-                    <h1 className="justify-center flex text-5xl text-white font-lobster ">About Nick's</h1>
+                <div className=" container bg-amber-700/75 h-1/2 w/1/2 mt-20 mb-20 mx-8 rounded-md px-4 py-4">
+                    <h1 className="justify-center flex text-3xl text-white font-lobster ">About Nick's</h1>
                     <p className="text-lg mt-4 text-white">
                         lorem ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
@@ -27,19 +25,27 @@ function Homepage(){
                         
                     </p>
                 </div>  
-                <div className=" container bg-amber-700/75 mt-24 mb-20 mx-8 rounded-md px-4 py-4">
-                    <img className=" rounded-md" src="https://images.pexels.com/photos/2775827/pexels-photo-2775827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
-                    {/* <h1>about us</h1>
-                    <p className="text-lg mt-4 text-white">
-                        lorem ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    </p> */}
+                <div className=" container bg-amber-700/75 mt-20 mb-20 mx-8 rounded-md px-2 py-2">
+                    <img className="rounded-md w-full h-full" alt="Espresso machine" src="https://images.pexels.com/photos/2775827/pexels-photo-2775827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
                 </div>  
             </div>   
+            <div className="">
+                <div className="flex justify-center">
+                    <h1 className="w-1/4 justify-center rounded-md flex text-white font-lobster text-3xl bg-amber-700/75 ">Recommended Products</h1>
+                </div>
+                <div className="flex justify-evenly mt-4">
+        
+                {reccomendedProducts.map( item => {
+                    return (
+                        <div className=" bg-amber-700/75 rounded-md mb-4 px-4 py-2 cursor-pointer" key={item.id} onClick={() => handleDisplayItem(item.id)}>
+                            <Link to="/viewitem">    
+                                <img className="h-32 w-42 rounded-md mx-auto my-2"src={item.image_url} alt={item.name}/>
+                                <h1 className="justify-center flex text-white text-xl">{item.name}</h1>
+                            </Link>
+                        </div>
+                        )})}
+                </div>
+            </div>
         </div>
     )
 }

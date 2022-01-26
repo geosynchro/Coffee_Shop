@@ -10,7 +10,7 @@ function EmptyUserCart(){
         />
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Your cart is empty!</h2>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">To add items to your cart,</h2>
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">check out our current products.</h2>
+        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">check out our <a className='underline hover:text-amber-600' href='./products'>current products</a>.</h2>
 
         
 

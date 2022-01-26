@@ -10,6 +10,7 @@ import LogoutPage from "./LogoutPage";
 import ShoppingCart from "./ShoppingCart"
 import ViewItem from "./ViewItem";
 import BlogPage from "./BlogPage";
+// import Footer from "./Footer"
 
 function App() {
   //Stateful variables
@@ -221,9 +222,10 @@ function App() {
             <BlogPage blog={blog} user={user} commentSubmit={commentSubmit}/>
           </Route>
           <Route path="/">
-            <Homepage />
+            <Homepage items={items} viewItemPage={viewItemPage}/>
           </Route>
         </Switch>
+        {/* <Footer /> */}
       </div>
   );
 }

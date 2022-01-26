@@ -10,9 +10,9 @@ function BlogTitleCards({ id, user, title, viewBlogPage}){
     return(
         <div>
             <Link to="/viewblog">
-                <div onClick={() => handleBlogClick(id)} className=" bg-gray-200 my-2 mx-2 px-2 py-2 border-2 border-red-200 ">
-                    <h1>{title}</h1>
-                    <h2>Author: {user.username}</h2>
+                <div onClick={() => handleBlogClick(id)} className=" bg-amber-800/75 my-6 text-white rounded-lg mx-2 px-2 py-2 ">
+                    <h1 className='text-center text-xl'>{title}</h1>
+                    <h2 className='text-center text-lg'>Written by: {user.username}</h2>
                 </div>
             </Link>
         </div>

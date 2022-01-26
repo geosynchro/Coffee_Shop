@@ -15,21 +15,27 @@ function BlogPage({blog, user, commentSubmit}){
     }
 
     return(
-        <div>
+        <div className=' flex justify-center bg-coffee7 bg-fixed h-full'>
             <div>
-                <h1 className="text-xl">{blog.title}</h1>
+            <div className="flex justify-center">
+                <h1 className="text-2xl text-center mt-8 bg-amber-800 rounded-lg px-4 py-2 text-white font-lobster">{blog.title}</h1>
             </div>
             <div>
-                {/* <h2>Written by: {blog.user.username}</h2> */}
+                <h2 className='text-center text-xl font-lobster mt-4 mb-6'>Written by: {blog.user.username}</h2>
             </div>
-            <div>
-                <p>{blog.blog_text}</p>
+            <div className='flex bg-amber-800/75 rounded-lg mx-80'>
+                <p className='text-lg py-4 px-4 text-white '>{blog.blog_text}</p>
             </div>
-            <div className="mt-10">
-                <button onClick={handleClick} className=" bg-amber-400 rounded-md px-1 py-1 ">leave a comment</button>
-                {commentForm ?  (user ? <CommentForm blog_id={blog.id} user_id={user.id} commentSubmit={commentSubmit}/> : <p>Please Login to your account to leave a comment</p>) : null}
-                <h1>comments:</h1>
-            {comments }
+            <div className='flex justify-center'>
+                <div className="">
+                    <div className='container'>
+                    <button onClick={handleClick} className=" container mt-6 bg-amber-800 text-white rounded-md px-2 py-1">leave a comment</button>
+                    {commentForm ?  (user ? <CommentForm blog_id={blog.id} user_id={user.id} commentSubmit={commentSubmit}/> : <p>Please Login to your account to leave a comment</p>) : null}
+                    </div>
+                    <h1 className='text-center text-2xl font-lobster'>Comments:</h1>
+                    {comments }
+                </div>
+            </div>
             </div>
         </div>       
     )

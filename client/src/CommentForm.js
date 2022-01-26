@@ -20,7 +20,7 @@ function CommentForm({user_id, blog_id, commentSubmit}){
     return(
         <div>
             <form onSubmit={handleSubmit}>
-                <input className="mx-2 my-2 border-2 border-gray-200" name="comment_text" value={formData.comment_text} onChange={handleChange} placeholder="Leave a comment.."/>
+                <input className="mx-2 my-2 w-56 border-2 border-gray-200" name="comment_text" value={formData.comment_text} onChange={handleChange} placeholder="Leave a comment.."/>
                 <button type="submit" className="bg-gray-100 rounded-md px-1 py-1 shadow-md shadow-gray-300">submit</button>
             </form>
         </div>

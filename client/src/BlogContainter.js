@@ -15,8 +15,11 @@ function BlogContainer({viewBlogPage}){
 
 
     return(
-        <div className="w-1/2" >
-            {blogsToDisplay}
+        <div className="flex justify-center bg-coffee7 bg-fixed h-screen">   
+            <div className=" justify-center w-1/3 mt-6" >
+                <h1 className="text-center mt-2 mb-6 font-lobster text-3xl">The Coffee Supply Blog</h1>
+                {blogsToDisplay}
+            </div>
         </div>
     )
 }

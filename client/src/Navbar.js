@@ -2,16 +2,10 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, UserIcon, XIcon, ShoppingCartIcon } from '@heroicons/react/outline'
+import {  MenuIcon, UserIcon, XIcon, ShoppingCartIcon } from '@heroicons/react/outline'
 import CoffeeLogo from './assets/coffeelogo.svg'
 import { Link } from 'react-router-dom'
 
-// const navigation = [
-//   { name: 'Home', href: '#', current: true },
-//   { name: 'Products', href: '#', current: false },
-//   { name: 'Blog', href: '#', current: false },
-  
-// ]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
