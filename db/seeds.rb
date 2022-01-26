@@ -67,11 +67,11 @@ Review.create(item_id: Item.ids.sample, user_id: User.ids.sample, rating: rand(1
 Review.create(item_id: Item.ids.sample, user_id: User.ids.sample, rating: rand(1..5), review_text: "IDK What I'm doing someone help me please! I'm trapped in the computer and I can't get out!")
 
 # Blog Seed Data
-Blog.create(title: "Coffee Stuff", user: u1.id, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
-Blog.create(title: "Coffee Stuff part 2", user: u1.id, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
-Blog.create(title: "YO THIS IS MY BLOG TITLE", user: u1.id, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
-Blog.create(title: "The essence of Coffee: a poem", user: u1.id, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
-Blog.create(title: "Hello Coffee World", user: u1.id, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
+Blog.create(title: "Coffee Stuff", user_id: u1.id, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
+Blog.create(title: "Coffee Stuff part 2", user_id: u1.id, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
+Blog.create(title: "YO THIS IS MY BLOG TITLE", user_id: u1.id, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
+Blog.create(title: "The essence of Coffee: a poem", user_id: u1.id, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
+Blog.create(title: "Hello Coffee World", user_id: u1.id, blog_text: Faker::Lorem.paragraph(sentence_count: 40, supplemental: true, random_sentences_to_add: 4)  )
 
 
 Comment.create(comment_text: "this blog is fire", user_id:rand(1..2), blog_id:rand(1..5))
