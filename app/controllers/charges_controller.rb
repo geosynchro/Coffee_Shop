@@ -4,9 +4,9 @@ class ChargesController < ApplicationController
 
     def payment
         
-        items = @user.carts.items.map()
+        items = @user.carts.map()
                
-        thing = items.inject(0){|sum,e| sum + e.price }
+        thing = items.inject(0){|sum,e| sum + e.item.price }
         
         payment_intent = Stripe::PaymentIntent.create({
             amount: thing * 100,

@@ -10,7 +10,9 @@ import LogoutPage from "./LogoutPage";
 import ShoppingCart from "./ShoppingCart"
 import ViewItem from "./ViewItem";
 import BlogPage from "./BlogPage";
-// import Footer from "./Footer"
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+const promise = loadStripe("pk_test_51KLvPyKHXpK19GyRm6yB1mChzK4EUgUR7Ux5wE2bmanIxC7H3gfXk9xN4z3TG5cyHGqSSipGraMYjFLav568t4Fd00zNkZ9pt2");
 
 function App() {
   //Stateful variables
@@ -195,36 +197,38 @@ function App() {
   return (
   
       <div className="App">
-        <Navbar user={user} onLogin={setUser} onLogout={onLogout}/> 
-        <Switch>
-          <Route path="/blogs">
-            <BlogContainer />
-          </Route>
-          <Route path="/products">
-            <ProductContainer viewItemPage={viewItemPage} addCartItem={handleAddCartItem} items={itemsToDisplay} setItems={setItems} search={search} setSearch={setSearch} setCategory={setCategory} user={user}/>
-          </Route>
-          <Route path="/cart">
-            <ShoppingCart items={items} user={user} deleteFromCart={handleCartItemDelete}/>
-          </Route>
-          <Route path="/login">
+        <Elements stripe={promise}>
+          <Navbar user={user} onLogin={setUser} onLogout={onLogout}/> 
+          <Switch>
+            <Route path="/blogs">
+              <BlogContainer />
+            </Route>
+            <Route path="/products">
+              <ProductContainer viewItemPage={viewItemPage} addCartItem={handleAddCartItem} items={itemsToDisplay} setItems={setItems} search={search} setSearch={setSearch} setCategory={setCategory} user={user}/>
+            </Route>
+            <Route path="/cart">
+              <ShoppingCart items={items} user={user} deleteFromCart={handleCartItemDelete}/>
+            </Route>
+            <Route path="/login">
+              <UserLoginProfile  deleteUser={handleUserDelete} updateUser={updateUser} user={user} setUser={setUser} setPassword={setPassword} setEmail={setEmail} handleUserSubmit={handleUserSubmit} handleSignUpSubmit={handleSignUpSubmit} loginError={loginError}/>
+            </Route>
+            <Route path="/userprofile">
             <UserLoginProfile  deleteUser={handleUserDelete} updateUser={updateUser} user={user} setUser={setUser} setPassword={setPassword} setEmail={setEmail} handleUserSubmit={handleUserSubmit} handleSignUpSubmit={handleSignUpSubmit} loginError={loginError}/>
-          </Route>
-          <Route path="/userprofile">
-          <UserLoginProfile  deleteUser={handleUserDelete} updateUser={updateUser} user={user} setUser={setUser} setPassword={setPassword} setEmail={setEmail} handleUserSubmit={handleUserSubmit} handleSignUpSubmit={handleSignUpSubmit} loginError={loginError}/>
-          </Route>
-          <Route path="/logout">
-            <LogoutPage />
-          </Route>
-          <Route path="/viewitem">
-            <ViewItem itemView={itemView} reviews={reviews} user={user} reviewSubmit={reviewSubmit}/>
-          </Route>
-          <Route path="/viewblog/:id">
-            <BlogPage  user={user} commentSubmit={commentSubmit}/>
-          </Route>
-          <Route path="/">
-            <Homepage items={items} viewItemPage={viewItemPage}/>
-          </Route>
-        </Switch>
+            </Route>
+            <Route path="/logout">
+              <LogoutPage />
+            </Route>
+            <Route path="/viewitem">
+              <ViewItem itemView={itemView} reviews={reviews} user={user} reviewSubmit={reviewSubmit}/>
+            </Route>
+            <Route path="/viewblog/:id">
+              <BlogPage  user={user} commentSubmit={commentSubmit}/>
+            </Route>
+            <Route path="/">
+              <Homepage items={items} viewItemPage={viewItemPage}/>
+            </Route>
+          </Switch>
+        </Elements>
         {/* <Footer /> */}
       </div>
   );
