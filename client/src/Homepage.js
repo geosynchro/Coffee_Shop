@@ -10,7 +10,7 @@ function Homepage({items, viewItemPage}){
         <div className="bg-coffee7 bg-scroll h-screen overflow-auto" >
             <div className="flex">
                 <div className=" container bg-amber-700/75 h-1/2 w/1/2 mt-20 mb-20 mx-8 rounded-md px-4 py-4">
-                    <h1 className="justify-center flex text-3xl text-white font-lobster ">About Nick's</h1>
+                    <h1 className="justify-center flex text-3xl text-white font-lobster ">About The Supply</h1>
                     <p className="text-lg mt-4 text-white">
                         lorem ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
@@ -46,10 +46,10 @@ function Homepage({items, viewItemPage}){
                         )})}
                 </div>
             </div>
-            <footer className="bg-amber-500 mt-10 text-center lg:text-left">
+            <footer className="bg-amber-500 mt-10 text-center lg:text-left ">
                 <div className="text-gray-700 text-center p-4">
                     © 2022 Copyright:
-                    <a className="text-white ml-2 hover:text-amber-700" href="https://nicks-coffee-shop.herokuapp.com/">Nick's Coffee Supply</a>
+                    <a className="text-white ml-2 hover:text-amber-700" href="https://nicks-coffee-shop.herokuapp.com/">The Coffee Supply</a>
                     <span className='ml-10'> Developed by Nicholas Fagner</span>
                     <a className="text-white ml-2 hover:text-amber-700" href="https://www.linkedin.com/in/nicholas-fagner/">Linkedin</a>
                     <a className="text-white ml-2 hover:text-amber-700" href="https://github.com/geosynchro">Github</a>

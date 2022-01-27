@@ -81,6 +81,7 @@ function CartDisplayPage({user, deleteFromCart}){
   
     
     return(
+      <div className='flex justify-center mt-8'>
         <div className="flex flex-col">
         { cartItems.length > 0 ?
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -120,10 +121,10 @@ function CartDisplayPage({user, deleteFromCart}){
                           <div className="flex-shrink-0 h-10 w-10">
                             <img className="h-10 w-10 rounded-full" src={cart.item.image_url} alt="" />
                           </div>
-                          <div className="ml-4">
+                          {/* <div className="ml-4">
                             <div className="text-sm font-medium text-gray-900">{cart.item.name}</div>
                             <div className="text-sm text-gray-500">{cart.item.description}</div>
-                          </div>
+                          </div> */}
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -176,12 +177,22 @@ function CartDisplayPage({user, deleteFromCart}){
         :
         <EmptyUserCart />}
         <div>
-          {
-          checkout ? 
+          { cartItems.length > 0 ?
+          (checkout ? 
           <div className='flex justify-center'>
-          <div className='w-1/5'>
-            <form id="payment-form" className="border-2 py-2 px-2 mt-24" onSubmit={handleSubmit} >
-            <CardElement id="card-element" options={cardStyle} onChange={handleChange} />
+          <div className='w-96'>
+            <form id="payment-form" className="border-2 py-2 px-2 mt-20" onSubmit={handleSubmit} >
+            <input placeholder="First Name..." className='appearance-none mb-1  px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-amber-500 focus:border-amber-500 focus:z-10 sm:text-sm'></input>
+            <input placeholder="Last Name..." className='ml-1 mb-1 appearance-none px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-amber-500 focus:border-amber-500 focus:z-10 sm:text-sm'></input>
+            <input placeholder="Address line 1..." className=' mb-1 appearance-none w-full block px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-amber-500 focus:border-amber-500 focus:z-10 sm:text-sm'></input>
+            <input placeholder="Address line 2..." className='mb-1 appearance-none w-full block px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-amber-500 focus:border-amber-500 focus:z-10 sm:text-sm'></input>
+            <input placeholder="City..." className=' mb-1 appearance-none px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-amber-500 focus:border-amber-500 focus:z-10 sm:text-sm'></input>
+            <input placeholder="ZipCode..." className=' w-1/4 ml-1 mb-1 appearance-none px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-amber-500 focus:border-amber-500 focus:z-10 sm:text-sm'></input>
+            <select className="appearance-none px-3 w-20 ml-2  py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-amber-500 focus:border-amber-500 focus:z-10 sm:text-sm" >
+                        <option value="all">State...</option>
+
+            </select>
+            <CardElement className='mt-1 border border-gray-300 rounded-md  py-2'  id="card-element" options={cardStyle} onChange={handleChange} />
             <button
                 className='bg-amber-500 text-white rounded-md py-2 px-4 mt-2'
                 disabled={processing || disabled || succeeded}
@@ -216,9 +227,12 @@ function CartDisplayPage({user, deleteFromCart}){
         </div>
         </div>
            : 
+           null)
+           : 
            null
            }
         </div>
+      </div>
       </div>
     )
 }

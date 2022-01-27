@@ -2,6 +2,9 @@ import CoffeeLogo from './assets/coffeelogo.svg'
 
 function LogoutPage(){
     return(
+      <div className='bg-coffee7 bg-scroll h-screen overflow-auto'>
+
+     
         <div className='mt-12'>
         <img
           className="mx-auto h-12 w-auto"
@@ -12,6 +15,7 @@ function LogoutPage(){
 
         
 
+      </div>
       </div>
     )
 }
