@@ -189,7 +189,7 @@ function CartDisplayPage({user, deleteFromCart}){
             >
                 <span id="button-text">
                     {processing ? (
-                        <div className="spinner" id="spinner"></div>
+                        <div className="cursor-progress" id="spinner">"Processing..."</div>
                     ) : (
                         "Pay now"
                     )}

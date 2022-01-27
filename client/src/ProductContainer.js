@@ -23,7 +23,7 @@ function ProductContainer({addCartItem ,items, setItems, search, setSearch, view
                     <select className="appearance-none ml-2 block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-amber-500 focus:border-amber-500 focus:z-10 sm:text-sm" onChange={(e)=>setCategory(e.target.value)}>
                         <option value="all">Select a Category...</option>
                         <option value="all">All</option>
-                        <option value="pourover">Pourover</option>
+                        <option value="Pourover">Pourover</option>
                         <option value="Beans">Beans</option>
                         <option value="Utensils">Utensils</option>
                         <option value="Grinders">Grinders</option>

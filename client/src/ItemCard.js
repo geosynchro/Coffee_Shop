@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 function ItemCard({name, id, price, description, category, image, user, addCartItem, viewItemPage}){
-
-
+  const [inCart, setInCart] = useState(false)
+    
     function handleClick(){
         addCartItem({
             "user_id" : user.id,
             "item_id" : id
         })
+        setInCart((prev) => !prev)
     }
 
     function handleAlert(){
@@ -38,10 +40,12 @@ function ItemCard({name, id, price, description, category, image, user, addCartI
 
                
                 <div>
-                <button onClick={ user ? () => handleClick() : () => handleAlert()} className="flex mt-1 mr-1 bg-amber-500 px-1 py-1 rounded-md mb-2 text-md text-white hover:text-amber-800 hover:underline">Add to cart</button>
-                  <div>
-                  {user ? (user.is_admin ? <button className="flex mx-auto mt-1 bg-amber-500 px-1 py-1 rounded-md mb-2 text-md text-white hover:text-amber-800 hover:underline">Edit/Delete Item</button> : null) : null }
-                  </div>
+               {inCart ? 
+                <p className=' bg-amber-500 text-white py-1 px-2 mt-1 rounded-md'>Item in cart</p> 
+              // <button onClick={ user ? () => handleClick() : () => handleAlert()} className="flex mt-1 mr-1 bg-amber-500 px-1 py-1 rounded-md mb-2 text-md text-white hover:text-amber-800 hover:underline">Remove from cart</button>
+               :
+               <button onClick={ user ? () => handleClick() : () => handleAlert()} className="flex mt-1 mr-1 bg-amber-500 px-1 py-1 rounded-md mb-2 text-md text-white hover:text-amber-800 hover:underline">Add to cart</button>
+               }
                 </div>
                 </div>
                 {/* <div>
@@ -54,6 +58,10 @@ function ItemCard({name, id, price, description, category, image, user, addCartI
                   }
                 </div> */}
                </div>
+                <div>
+                {user ? (user.is_admin ? <button className="flex mx-auto mt-1 bg-amber-500 px-1 py-1 rounded-md mb-2 text-md text-white hover:text-amber-800 hover:underline">Edit/Delete Item</button> : null) : null }
+                </div>
+
               </div>
         </div>
     )

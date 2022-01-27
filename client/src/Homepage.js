@@ -7,7 +7,7 @@ function Homepage({items, viewItemPage}){
         viewItemPage(id)
     }
     return(
-        <div className="bg-coffee7 bg-fixed h-full" >
+        <div className="bg-coffee7 bg-scroll h-screen overflow-auto" >
             <div className="flex">
                 <div className=" container bg-amber-700/75 h-1/2 w/1/2 mt-20 mb-20 mx-8 rounded-md px-4 py-4">
                     <h1 className="justify-center flex text-3xl text-white font-lobster ">About Nick's</h1>
@@ -46,6 +46,16 @@ function Homepage({items, viewItemPage}){
                         )})}
                 </div>
             </div>
+            <footer className="bg-amber-500 mt-10 text-center lg:text-left">
+                <div className="text-gray-700 text-center p-4">
+                    © 2022 Copyright:
+                    <a className="text-white ml-2 hover:text-amber-700" href="https://nicks-coffee-shop.herokuapp.com/">Nick's Coffee Supply</a>
+                    <span className='ml-10'> Developed by Nicholas Fagner</span>
+                    <a className="text-white ml-2 hover:text-amber-700" href="https://www.linkedin.com/in/nicholas-fagner/">Linkedin</a>
+                    <a className="text-white ml-2 hover:text-amber-700" href="https://github.com/geosynchro">Github</a>
+                </div>
+
+            </footer>
         </div>
     )
 }

@@ -1,14 +1,15 @@
 import { LockClosedIcon } from '@heroicons/react/solid'
 import CoffeeLogo from './assets/coffeelogo.svg'
 // import {useState} from 'react'
+import { Link } from 'react-router-dom'
 import SignUp from './SignUp'
 
 function LoginPage({handleSubmit, setEmail, setPassword, signUpSubmit, loginError}) {
 
 
   return (
-    <>
-      <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className=''>
+      <div className=" min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
             <img
@@ -54,6 +55,7 @@ function LoginPage({handleSubmit, setEmail, setPassword, signUpSubmit, loginErro
             </div>
 
             <div>
+             
               <button
                 type="submit"
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-amber-500 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
@@ -63,6 +65,7 @@ function LoginPage({handleSubmit, setEmail, setPassword, signUpSubmit, loginErro
                 </span>
                 Sign in
               </button>
+          
             </div>
           </form>
         </div>
@@ -71,7 +74,7 @@ function LoginPage({handleSubmit, setEmail, setPassword, signUpSubmit, loginErro
     <SignUp signUpSubmit={signUpSubmit}/>
 
 
-    </>
+    </div>
   )
 }
 

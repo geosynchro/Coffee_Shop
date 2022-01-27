@@ -75,6 +75,9 @@ function Navbar({user, onLogout}) {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <div>
+                  { user ? <p className='text-white mr-4 font-lobster'>Hello, {user.username}!</p> : null}
+                </div>
                 <Link to="/cart">
                 <button
                   type="button"
@@ -86,7 +89,9 @@ function Navbar({user, onLogout}) {
                 </Link>
 
                 {/* Profile dropdown */}
+
                 <Menu as="div" className="ml-3 relative">
+
                   <div>
                     <Menu.Button className="flex p-1 text-md text-gray-50 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-amber-800 focus:ring-white">
                       <span className="sr-only">Open user menu</span>
