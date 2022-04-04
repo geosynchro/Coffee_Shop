@@ -51,7 +51,7 @@ function ItemCard({name, id, price, description, category, image, user, addCartI
                 </div>
 
                 <div>
-                    {user ? (user.is_admin ? <button className="flex mx-auto mt-1 bg-amber-500 px-1 py-1 rounded-md mb-2 text-md text-white hover:text-amber-800 hover:underline">Edit/Delete Item</button> : null) : null }
+                    {user ? (user.is_admin ?  <Link to="/itemedit"><button onClick={() => handleDisplayItem(id)} className="flex mx-auto mt-1 bg-amber-500 px-1 py-1 rounded-md mb-2 text-md text-white hover:text-amber-800 hover:underline">Edit/Delete Item</button></Link> : null) : null }
                 </div>
 
               </div>

@@ -12,6 +12,7 @@ import ViewItem from "./ViewItem";
 import BlogPage from "./BlogPage";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import ItemEditPage from "./ItemEditPage";
 const promise = loadStripe("pk_test_51KLvPyKHXpK19GyRm6yB1mChzK4EUgUR7Ux5wE2bmanIxC7H3gfXk9xN4z3TG5cyHGqSSipGraMYjFLav568t4Fd00zNkZ9pt2");
 
 function App() {
@@ -223,6 +224,9 @@ function App() {
             </Route>
             <Route path="/viewblog/:id">
               <BlogPage  user={user} commentSubmit={commentSubmit}/>
+            </Route>
+            <Route path="/itemedit">
+              <ItemEditPage itemView={itemView} reviews={reviews} user={user} reviewSubmit={reviewSubmit}/>
             </Route>
             <Route path="/">
               <Homepage items={items} viewItemPage={viewItemPage}/>

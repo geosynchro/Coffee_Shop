@@ -50,7 +50,7 @@ function ViewItem({itemView, reviews, user, reviewSubmit}){
                         </div>
                         <div className="bg-gray-100/75 rounded-b-lg px-4  py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt className="text-md  font-medium text-black text-right">Average Rating:</dt>
-                            <dd className="mt-1 text-md text-gray-900 sm:mt-0 sm:col-span-2"> {avgRating ? `${avgRating} / 5` : "No reviews yet" }  
+                            <dd className="mt-1 text-md text-gray-900 sm:mt-0 sm:col-span-2"> {avgRating ? `${avgRating.toFixed(0)} / 5` : "No reviews yet" }  
                                 { reviews.length > 0 ?
                                     <button  className="bg-amber-500 text-white rounded-md px-1 py-1 ml-6 shadow-md shadow-gray-500 border- border-black" onClick={displayReviews}>
                                     {showReviews ? "Hide Reviews" : "View Reviews"}
