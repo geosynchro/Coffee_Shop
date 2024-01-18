@@ -1,6 +1,6 @@
 # The Coffee Supply
 
-The Coffee Supply is designed to be a light-weight mock e-commerce site specializing in cofee related products.  Easy to navigate, users are able to have a full online shopping experience as well as create their own accounts to particpate in the online discoures on all things coffee provided in the blog section of the app.  The Coffee Supply brings all things coffee into one place.
+The Coffee Supply is designed to be a light-weight mock e-commerce site specializing in cofee related products.  Easy to navigate, users are able to have a full online shopping experience as well as create their own accounts to particpate in the online discourse on all things coffee provided in the blog section of the app.  The Coffee Supply brings all things coffee into one place.
 
 ## Technologies
 
